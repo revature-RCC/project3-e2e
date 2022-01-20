@@ -13,7 +13,7 @@ public class RegisterPOM {
     WebDriver driver;
     WebDriverWait wait;
 
-    @FindBy(id="username")
+    @FindBy(id = "username")
     WebElement usernameInput;
 
     @FindBy(id = "password")
@@ -34,7 +34,7 @@ public class RegisterPOM {
     @FindBy(id = "errMessage")
     WebElement errorMessage;
 
-    public RegisterPOM(WebDriver driver){
+    public RegisterPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
 
@@ -42,40 +42,40 @@ public class RegisterPOM {
 
     }
 
-    public String getCurrentUrl(){
+    public String getCurrentUrl() {
         return this.driver.getCurrentUrl();
     }
 
-    public void enterUsername(String username){
+    public void enterUsername(String username) {
         this.usernameInput.sendKeys(username);
     }
 
-    public void enterPassword(String password){
+    public void enterPassword(String password) {
         this.passwordInput.sendKeys(password);
     }
 
-    public void enterFirstName(String firstName){
+    public void enterFirstName(String firstName) {
         this.firstNameInput.sendKeys(firstName);
     }
 
-    public void enterLastName(String lastName){
+    public void enterLastName(String lastName) {
         this.lastNameInput.sendKeys(lastName);
     }
 
-    public void enterEmail(String email){
+    public void enterEmail(String email) {
         this.emailInput.sendKeys(email);
     }
 
-    public void clickBtn(){
+    public void clickBtn() {
         this.registerBtn.click();
     }
 
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         this.wait.until(ExpectedConditions.visibilityOf(this.errorMessage));
         return this.errorMessage.getText();
     }
 
-
-
-
 }
+
+
+

@@ -33,7 +33,7 @@ Feature: Register Page
     Given a user is on the register page
     When a user leaves username input empty
     Then a user is given an please fill out this field notification
-    
+
   Scenario: Entering an empty email input will give user an error
     Given a user is on the register page
     When a user leaves email input empty
