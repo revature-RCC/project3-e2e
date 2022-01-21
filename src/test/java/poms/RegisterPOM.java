@@ -1,5 +1,6 @@
 package poms;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,12 +69,22 @@ public class RegisterPOM {
 
     public void clickBtn() {
         this.registerBtn.click();
+
     }
 
     public String getErrorMessage() {
-        this.wait.until(ExpectedConditions.visibilityOf(this.errorMessage));
-        return this.errorMessage.getText();
+        this.wait.until(ExpectedConditions.alertIsPresent());
+        String error = driver.switchTo().alert().getText();
+        driver.switchTo().alert().accept();
+        return error;
+
     }
+
+
+    public void waitForSuccessfulRegister(){
+        this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/login"));
+    }
+
 
 }
 
