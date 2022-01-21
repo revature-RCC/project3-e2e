@@ -19,7 +19,7 @@ public class LoginPOM {
     @FindBy(id = "password")
     WebElement passwordInput;
 
-    @FindBy(id = "login")
+    @FindBy(id = "login-btn")
     WebElement loginBtn;
 
     @FindBy(id = "register")

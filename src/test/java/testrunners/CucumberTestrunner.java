@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 
 
-        features = "features",
+        features = "features/main.feature",
 
         glue = "steps",
         dryRun = false
