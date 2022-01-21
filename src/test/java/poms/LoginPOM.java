@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -18,11 +19,14 @@ public class LoginPOM {
     @FindBy(id = "password")
     WebElement passwordInput;
 
-    @FindBy(className = "btn btn-primary")
+    @FindBy(id = "login")
     WebElement loginBtn;
 
-    /*@FindBy(className = "error-message-container")
-    WebElement messageElem;*/
+    @FindBy(id = "register")
+    WebElement registerBtn;
+
+    @FindBy(className = "err")
+    WebElement errMessage;
 
     public LoginPOM(WebDriver driver) {
         this.driver = driver;
@@ -43,4 +47,25 @@ public class LoginPOM {
         this.loginBtn.click();
     }
 
+    public void waitForSuccessfulLogin(){
+        this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/"));
+    }
+
+    public void waitForSuccessfulRedirect(){
+        this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/register"));
+    }
+
+    public String getCurrentUrl(){
+        return this.driver.getCurrentUrl();
+    }
+
+
+    public Boolean isErrMessageVisible(){
+        this.wait.until(ExpectedConditions.visibilityOf(errMessage));
+        return true;
+    }
+
+    public void clickRegisterBtn() {
+        this.registerBtn.click();
+    }
 }
