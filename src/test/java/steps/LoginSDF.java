@@ -11,10 +11,7 @@ public class LoginSDF {
 
     LoginPOM loginPOM;
 
-    @After
-    public void tearDown(){
-        DriverSingleton.quitInstance();
-    }
+
 
     @Given("a user is on the login page")
     public void a_user_is_on_the_login_page()  {
