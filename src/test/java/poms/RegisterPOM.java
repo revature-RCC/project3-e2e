@@ -32,7 +32,7 @@ public class RegisterPOM {
     @FindBy(id = "register-btn")
     WebElement registerBtn;
 
-    @FindBy(id = "errMessage")
+    @FindBy(id = "error-message")
     WebElement errorMessage;
 
     public RegisterPOM(WebDriver driver) {
@@ -72,12 +72,12 @@ public class RegisterPOM {
     }
 
     public String getErrorMessage() {
-        this.wait.until(ExpectedConditions.alertIsPresent());
-        String error = driver.switchTo().alert().getText();
-        driver.switchTo().alert().accept();
-        return error;
+        this.wait.until(ExpectedConditions.visibilityOf(errorMessage));
+        return this.errorMessage.getText();
+
 
     }
+
 
 
     public void waitForSuccessfulRegister(){
