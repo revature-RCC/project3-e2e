@@ -13,11 +13,6 @@ public class RegisterSDF {
 
     RegisterPOM registerPOM;
 
-    @After
-    public void tearDown(){
-        DriverSingleton.quitInstance();
-    }
-
     @Given("a user is on the register page")
     public void a_user_is_on_the_register_page() {
         DriverSingleton.getInstance().get("http://localhost:4200/register");

@@ -69,7 +69,6 @@ public class RegisterPOM {
 
     public void clickBtn() {
         this.registerBtn.click();
-
     }
 
     public String getErrorMessage() {

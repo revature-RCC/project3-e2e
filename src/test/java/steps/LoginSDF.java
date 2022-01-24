@@ -1,6 +1,5 @@
 package steps;
 
-import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,8 +9,6 @@ import poms.LoginPOM;
 public class LoginSDF {
 
     LoginPOM loginPOM;
-
-
 
     @Given("a user is on the login page")
     public void a_user_is_on_the_login_page()  {

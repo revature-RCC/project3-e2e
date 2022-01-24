@@ -15,7 +15,7 @@ Feature: Main Page
   Scenario: A user can search for a product
     Given A user is on the main page
     When A user inputs a search in the search bar
-    Then The user will be able to se searched items
+    Then The user will be able to see searched items
   Scenario: A user can go to cart page
     Given a user is on the login page
     When a user inputs valid credentials
@@ -23,3 +23,7 @@ Feature: Main Page
     Given A user is on the main page
     When A user clicks on the cart icon
     Then The user will be redirected to the cart page
+  Scenario: A user can alternate between light and dark mode
+    Given A user is on the main page
+    When The user clicks on the dark mode button
+    Then Then the color scheme will change

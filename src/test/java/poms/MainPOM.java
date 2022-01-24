@@ -37,11 +37,29 @@ public class MainPOM {
     @FindBy(id = "products")
     WebElement productsContainer;
 
+    @FindBy(tagName = "a")
+    List<WebElement> anchors;
+
+    @FindBy(tagName = "html")
+    WebElement theme;
+
     public MainPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
 
         PageFactory.initElements(this.driver, this);
+    }
+
+    public void clickDarkModeBtn(){
+        this.anchors.get(3).click();
+    }
+
+    public String checkThemeColor(){
+        if(this.theme.getAttribute("style").contains("black")) {
+            return "black";
+        } else {
+            return "white";
+        }
     }
 
     public String checkProducts(){
