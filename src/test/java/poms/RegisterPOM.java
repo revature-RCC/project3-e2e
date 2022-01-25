@@ -32,7 +32,10 @@ public class RegisterPOM {
     @FindBy(id = "register-btn")
     WebElement registerBtn;
 
-    @FindBy(id = "error-message")
+    @FindBy(id = "login-btn")
+    WebElement loginBtn;
+
+    @FindBy(className = "errorMessage")
     WebElement errorMessage;
 
     public RegisterPOM(WebDriver driver) {

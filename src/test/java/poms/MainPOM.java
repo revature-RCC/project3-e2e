@@ -76,14 +76,18 @@ public class MainPOM {
         }
     }
 
-    public String checkProducts(){
+    public String checkProductTitle(){
         List<WebElement> titleList = this.productsContainer.findElements(By.className("mediumFont"));
         return titleList.get(0).getText();
-
     }
 
-    public boolean checkSearch(String search, String productTitle){
-        return productTitle.toLowerCase().contains(search.toLowerCase());
+    public String checkProductDescription(){
+        List<WebElement> descriptionList = this.productsContainer.findElements(By.className("productDescription"));
+        return descriptionList.get(0).getText();
+    }
+
+    public boolean checkSearch(String search, String productTitle, String productDescription){
+        return productTitle.toLowerCase().contains(search.toLowerCase()) || productDescription.toLowerCase().contains(search.toLowerCase());
     }
 
     public void clickRegisterBtn(){

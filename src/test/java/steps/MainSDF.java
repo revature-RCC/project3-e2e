@@ -70,8 +70,9 @@ public class MainSDF {
 
     @Then("The user will be able to see searched items")
     public void the_user_will_be_able_to_see_searched_items() {
-        String product = this.mainPOM.checkProducts();
-        Assertions.assertTrue(this.mainPOM.checkSearch("java",product));
+        String title = this.mainPOM.checkProductTitle();
+        String description = this.mainPOM.checkProductDescription();
+        Assertions.assertTrue(this.mainPOM.checkSearch("java",title, description));
 
     }
 
