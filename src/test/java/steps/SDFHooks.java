@@ -11,17 +11,26 @@ public class SDFHooks {
     public static void setUp () {
         RegisterPOM registerPOM = new RegisterPOM (DriverSingleton.getInstance ());
 
-            DriverSingleton.getInstance().get("http://localhost:4200/register");
+        DriverSingleton.getInstance().get("http://localhost:4200/register");
 
-            registerPOM.enterFirstName("Selenium");
-            registerPOM.enterLastName("Test");
-            registerPOM.enterEmail("s@email.com");
-            registerPOM.enterUsername("selly");
-            registerPOM.enterPassword("password");
+        registerPOM.enterFirstName("Selenium");
+        registerPOM.enterLastName("Test");
+        registerPOM.enterEmail("s@email.com");
+        registerPOM.enterUsername("selly");
+        registerPOM.enterPassword("password");
 
-            registerPOM.clickBtn();
+        registerPOM.clickBtn();
+        registerPOM.waitForSuccessfulRedirect();
+        DriverSingleton.quitInstance();
 
-            DriverSingleton.quitInstance();
+//        if(registerPOM.getErrorMessage().equals("Error! Username already in use")){
+//            DriverSingleton.quitInstance();
+//        } else {
+//            registerPOM.waitForSuccessfulRedirect();
+//            DriverSingleton.quitInstance();
+//        }
+
+
 
     }
 

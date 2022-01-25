@@ -86,7 +86,6 @@ public class RegisterPOM {
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/login"));
     }
 
-
 }
 
 
