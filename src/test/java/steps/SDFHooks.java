@@ -11,7 +11,6 @@ public class SDFHooks {
     public static void setUp () {
         RegisterPOM registerPOM = new RegisterPOM (DriverSingleton.getInstance ());
 
-        try {
             DriverSingleton.getInstance().get("http://localhost:4200/register");
 
             registerPOM.enterFirstName("Selenium");
@@ -22,16 +21,8 @@ public class SDFHooks {
 
             registerPOM.clickBtn();
 
-            registerPOM.waitForSuccessfulRedirect();
+            DriverSingleton.quitInstance();
 
-        }
-
-        catch(UnhandledAlertException ignored) {
-        }
-
-        finally {
-            DriverSingleton.quitInstance ();
-        }
     }
 
     @After
