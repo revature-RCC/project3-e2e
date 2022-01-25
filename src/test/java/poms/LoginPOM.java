@@ -22,10 +22,10 @@ public class LoginPOM {
     @FindBy(id = "login-btn")
     WebElement loginBtn;
 
-    @FindBy(id = "register")
+    @FindBy(tagName = "button")
     WebElement registerBtn;
 
-    @FindBy(className = "err")
+    @FindBy(id = "errorMessage")
     WebElement errMessage;
 
     public LoginPOM(WebDriver driver) {
