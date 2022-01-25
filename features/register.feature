@@ -38,3 +38,8 @@ Feature: Register Page
     Given a user is on the register page
     When a user leaves email input empty
     Then a user will not be able to register and stay on page
+
+  Scenario: Clicking Login button will send user back to login page
+    Given a user is on the register page
+    When the user clicks the login button
+    Then the user is sent back to login page
