@@ -22,7 +22,7 @@ public class LoginPOM {
     @FindBy(id = "login-btn")
     WebElement loginBtn;
 
-    @FindBy(tagName = "button")
+    @FindBy(id = "register-btn")
     WebElement registerBtn;
 
     @FindBy(id = "errorMessage")
