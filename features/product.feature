@@ -12,6 +12,9 @@ Feature: Product Page
     When a user increments the quantity of the product
     Then a user can see the quantity increases
 
+    Scenario: A user puts an incorrect value
+      Given A user is on 
+
   Scenario: A registered user clicks on the add to cart button
     Given A user is on the main page
     When A user clicks on a product
