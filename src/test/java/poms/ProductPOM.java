@@ -14,7 +14,7 @@ public class ProductPOM {
     WebDriver driver;
     WebDriverWait wait;
 
-    @FindBy(tagName = "input")
+    @FindBy(className = "quantityInput")
     WebElement quantitySelect;
 
     @FindBy(tagName = "button")
@@ -22,6 +22,9 @@ public class ProductPOM {
 
     @FindBy(id = "cartMessage")
     WebElement cartMsg;
+
+    @FindBy(xpath = "/html/body/app-root/div/app-product-page/div/div[2]/p[3]")
+    WebElement maxStock;
 
     public ProductPOM(WebDriver driver) {
         this.driver = driver;
@@ -71,5 +74,17 @@ public class ProductPOM {
         return error;
 
     }
+
+    public void inputQuantity(String input){
+        this.quantitySelect.sendKeys(input);
+    }
+
+    public String getMaxStock(){
+      return  this.maxStock.getText().substring(10);
+    }
+
+    /*public String getCurrentInput(){
+        return  this.quantitySelect.getAttribute("ng-reflect-model");
+    }*/
 
 }

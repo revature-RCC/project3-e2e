@@ -9,6 +9,7 @@
         <module name="e2e-p3" />
         <module name="project3-e2e" />
         <module name="P3E2E" />
+        <module name="P3EndtoEnd" />
       </profile>
     </annotationProcessing>
   </component>
