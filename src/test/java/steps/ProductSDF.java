@@ -5,8 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
-import poms.LoginPOM;
-import poms.MainPOM;
 import poms.ProductPOM;
 
 public class ProductSDF {
@@ -16,9 +14,9 @@ public class ProductSDF {
 
     @Given("a user is on the product page")
     public void a_user_is_on_the_product_page() {
-        DriverSingleton.getInstance().get("http://localhost:4200/product/16");
+        DriverSingleton.getInstance().get("http://localhost:4200/product/14");
         this.productPOM = new ProductPOM(DriverSingleton.getInstance());
-        Assertions.assertEquals("http://localhost:4200/product/16", this.productPOM.getCurrentUrl());
+        Assertions.assertEquals("http://localhost:4200/product/14", this.productPOM.getCurrentUrl());
     }
     @When("a user increments the quantity of the product")
     public void a_user_increments_the_quantity_of_the_product() {
@@ -58,6 +56,32 @@ public class ProductSDF {
     public void the_user_will_be_redirected_to_the_cart_page() {
         this.productPOM.waitForSuccessfulCartRedirect();
         Assertions.assertEquals("http://localhost:4200/cart", this.productPOM.getCurrentUrl());
+    }
+
+    @When("a user inputs a number above the stock of the product")
+    public void a_user_inputs_a_number_above_the_stock_of_the_product() {
+       productPOM.inputQuantity("1000000000");
+    }
+    @Then("the number in the input equals max stock")
+    public void the_number_in_the_input_equals_max_stock() {
+        Assertions.assertEquals(this.productPOM.getMaxStock(), this.productPOM.getQuantity());
+    }
+    @When("a user inputs a negative number")
+    public void a_user_inputs_a_negative_number() {
+        productPOM.inputQuantity("-");
+
+    }
+    @Then("the number in the input is set to one")
+    public void the_number_in_the_input_is_set_to_one() {
+        Assertions.assertEquals("1", this.productPOM.getQuantity());
+    }
+    @When("a user inputs a non-number character")
+    public void a_user_inputs_a_non_number_character() {
+        productPOM.inputQuantity("z");
+    }
+    @Then("the number in the input stays the same")
+    public void the_number_in_the_input_stays_the_same() {
+        Assertions.assertEquals("1", this.productPOM.getQuantity());
     }
 
 

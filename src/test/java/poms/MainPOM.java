@@ -110,13 +110,13 @@ public class MainPOM {
     public void clickProduct(){
 
         List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
-        productList.get(0).click();
+        productList.get(1).click();
 
     }
 
     public String getId(){
         List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
-        return productList.get(0).getAttribute("id").split("#")[1];
+        return productList.get(1).getAttribute("id").split("#")[1];
     }
 
     public String getCurrentUrl(){
