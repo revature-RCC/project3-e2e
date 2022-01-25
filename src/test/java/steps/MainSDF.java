@@ -95,4 +95,10 @@ public class MainSDF {
     public void then_the_color_scheme_will_change() {
         Assertions.assertNotEquals(color, this.mainPOM.checkThemeColor());
     }
+
+    @Then("The user can see sale tags and sale prices")
+    public void the_user_can_see_sale_tags_and_sale_prices() {
+        this.mainPOM.waitForSales();
+        Assertions.assertTrue(this.mainPOM.checkSales());
+    }
 }

@@ -27,3 +27,6 @@ Feature: Main Page
     Given A user is on the main page
     When The user clicks on the dark mode button
     Then Then the color scheme will change
+  Scenario: A user will see a sale tag and a sale price
+    Given A user is on the main page
+    Then The user can see sale tags and sale prices

@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Locale;
 
 public class MainPOM {
     WebDriver driver;
@@ -21,9 +20,6 @@ public class MainPOM {
 
     @FindBy(id = "login-btn")
     WebElement loginBtn;
-
-    @FindBy(id = "product#16")
-    WebElement product;
 
     @FindBy(id = "searchInput")
     WebElement searchInput;
@@ -43,11 +39,29 @@ public class MainPOM {
     @FindBy(tagName = "html")
     WebElement theme;
 
+    @FindBy(className = "oldPrice")
+    List<WebElement> oldPrice;
+
+    @FindBy(className = "saleRibbon")
+    List<WebElement> saleRibbon;
+
     public MainPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
 
         PageFactory.initElements(this.driver, this);
+    }
+
+    public void waitForSales(){
+        this.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("oldPrice"), 0));
+    }
+
+    public Boolean checkSales(){
+        if(this.saleRibbon.isEmpty() && this.oldPrice.isEmpty()){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void clickDarkModeBtn(){
