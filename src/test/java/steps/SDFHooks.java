@@ -20,15 +20,16 @@ public class SDFHooks {
         registerPOM.enterPassword("password");
 
         registerPOM.clickBtn();
-        registerPOM.waitForSuccessfulRedirect();
-        DriverSingleton.quitInstance();
+//        registerPOM.waitForSuccessfulRedirect();
+//        DriverSingleton.quitInstance();
 
-//        if(registerPOM.getErrorMessage().equals("Error! Username already in use")){
-//            DriverSingleton.quitInstance();
-//        } else {
-//            registerPOM.waitForSuccessfulRedirect();
-//            DriverSingleton.quitInstance();
-//        }
+        if(registerPOM.getErrorMessage()){
+            System.out.println(registerPOM.getErrorMessage());
+            DriverSingleton.quitInstance();
+        } else {
+            registerPOM.waitForSuccessfulRedirect();
+            DriverSingleton.quitInstance();
+        }
 
 
 

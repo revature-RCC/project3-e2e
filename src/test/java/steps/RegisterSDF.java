@@ -44,7 +44,7 @@ public class RegisterSDF {
     }
     @Then("a user is given an invalid username message")
     public void a_user_is_given_an_invalid_username_message() {
-        String error = this.registerPOM.getErrorMessage();
+        String error = this.registerPOM.waitForErrorMessage();
         Assertions.assertEquals("Error! Username already in use", error );
     }
 
@@ -59,7 +59,7 @@ public class RegisterSDF {
     }
     @Then("a user is given an invalid email message")
     public void a_user_is_given_an_invalid_email_message() {
-        String error = this.registerPOM.getErrorMessage();
+        String error = this.registerPOM.waitForErrorMessage();
         Assertions.assertEquals("Error! Email already in use", error );
     }
 

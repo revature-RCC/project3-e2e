@@ -1,5 +1,6 @@
 package poms;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -73,9 +74,18 @@ public class RegisterPOM {
         this.registerBtn.click();
     }
 
-    public String getErrorMessage() {
+    public String waitForErrorMessage() {
         this.wait.until(ExpectedConditions.visibilityOf(errorMessage));
         return this.errorMessage.getText();
+    }
+
+    public Boolean getErrorMessage() {
+        try {
+            this.wait.until(ExpectedConditions.visibilityOf(errorMessage));
+            return true;
+        } catch (TimeoutException e){
+            return false;
+        }
     }
 
     public void clickLoginBtn(){
