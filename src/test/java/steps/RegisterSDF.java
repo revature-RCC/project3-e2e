@@ -3,11 +3,8 @@ package steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.After;
 import org.junit.jupiter.api.Assertions;
 import poms.RegisterPOM;
-
-import java.sql.Driver;
 
 public class RegisterSDF {
 
@@ -32,7 +29,7 @@ public class RegisterSDF {
 
     @Then("a user is redirected to the login page")
     public void a_user_is_redirected_to_the_login_page() {
-        this.registerPOM.waitForSuccessfulRegister();
+        this.registerPOM.waitForSuccessfulRedirect();
         Assertions.assertEquals("http://localhost:4200/login", this.registerPOM.getCurrentUrl());
     }
 
@@ -70,7 +67,6 @@ public class RegisterSDF {
     public void a_user_leaves_firstname_input_empty() {
         this.registerPOM.enterUsername("seleniumUser1");
         this.registerPOM.enterPassword("password");
-
         this.registerPOM.enterLastName("user");
         this.registerPOM.enterEmail("SelUser@revature.net");
         this.registerPOM.clickBtn();
@@ -81,7 +77,6 @@ public class RegisterSDF {
         this.registerPOM.enterUsername("seleniumUser1");
         this.registerPOM.enterPassword("password");
         this.registerPOM.enterFirstName("sel");
-
         this.registerPOM.enterEmail("SelUser@revature.net");
         this.registerPOM.clickBtn();
     }
@@ -89,7 +84,6 @@ public class RegisterSDF {
     @When("a user leaves password input empty")
     public void a_user_leaves_password_input_empty() {
         this.registerPOM.enterUsername("seleniumUser1");
-
         this.registerPOM.enterFirstName("sel");
         this.registerPOM.enterLastName("user");
         this.registerPOM.enterEmail("SelUser@revature.net");
@@ -122,5 +116,15 @@ public class RegisterSDF {
 
         Assertions.assertEquals("http://localhost:4200/register", this.registerPOM.getCurrentUrl());
 
+    }
+
+    @When("the user clicks the login button")
+    public void the_user_clicks_the_login_button() {
+        this.registerPOM.clickLoginBtn();
+    }
+    @Then("the user is sent back to login page")
+    public void the_user_is_sent_back_to_login_page() {
+        this.registerPOM.waitForSuccessfulRedirect();
+        Assertions.assertEquals("http://localhost:4200/login", this.registerPOM.getCurrentUrl());
     }
 }
