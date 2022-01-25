@@ -16,11 +16,6 @@ public class MainSDF {
 
     String color;
 
-    @After
-    public void tearDown(){
-        DriverSingleton.quitInstance();
-    }
-
     @Given("A user is on the main page")
     public void a_user_is_on_the_main_page() {
         DriverSingleton.getInstance().get("http://localhost:4200/");

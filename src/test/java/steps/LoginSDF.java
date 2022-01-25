@@ -19,7 +19,7 @@ public class LoginSDF {
     }
     @When("a user inputs valid credentials")
     public void a_user_inputs_valid_credentials() {
-        this.loginPOM.enterUsername("TestUser");
+        this.loginPOM.enterUsername("selly");
         this.loginPOM.enterPassword("password");
         this.loginPOM.submitLogin();
     }
@@ -42,6 +42,7 @@ public class LoginSDF {
     public void a_user_clicks_on_the_register_link() {
         this.loginPOM.clickRegisterBtn();
     }
+
     @Then("a user is redirected to the register page")
     public void a_user_is_redirected_to_the_register_page() {
         this.loginPOM.waitForSuccessfulRedirect();
