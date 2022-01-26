@@ -31,3 +31,8 @@ Feature: Product Page
     When a user clicks the continue shopping button
     Then the user will be redirected to the main page
 
+  Scenario: A user navigates back to main page by clicking title
+    When The user clicks on the Revature Courseware Cornucopia title
+    Then The user is redirected to the main page
+
+

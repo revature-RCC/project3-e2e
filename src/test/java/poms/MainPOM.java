@@ -55,120 +55,125 @@ public class MainPOM {
     @FindBy(id = "anything")
     WebElement anything;
 
+    @FindBy(className = "largeGap")
+    WebElement name;
+
+    @FindBy(id = "logout-btn")
+    WebElement logoutBtn;
+
+
     public MainPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
         this.js = (JavascriptExecutor) driver;
 
 
-
         PageFactory.initElements(this.driver, this);
     }
 
-    public void waitForSales(){
+    public void waitForSales() {
         this.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("oldPrice"), 0));
     }
 
-    public Boolean checkSales(){
-        if(this.saleRibbon.isEmpty() && this.oldPrice.isEmpty()){
+    public Boolean checkSales() {
+        if (this.saleRibbon.isEmpty() && this.oldPrice.isEmpty()) {
             return false;
         } else {
             return true;
         }
     }
 
-    public void clickDarkModeBtn(){
+    public void clickDarkModeBtn() {
         this.anchors.get(3).click();
     }
 
-    public String checkThemeColor(){
-        if(this.theme.getAttribute("style").contains("black")) {
+    public String checkThemeColor() {
+        if (this.theme.getAttribute("style").contains("black")) {
             return "black";
         } else {
             return "white";
         }
     }
 
-    public String checkProductTitle(){
+    public String checkProductTitle() {
         List<WebElement> titleList = this.productsContainer.findElements(By.className("mediumFont"));
         return titleList.get(0).getText();
     }
 
-    public String checkProductDescription(){
+    public String checkProductDescription() {
         List<WebElement> descriptionList = this.productsContainer.findElements(By.className("productDescription"));
         return descriptionList.get(0).getText();
     }
 
-    public boolean checkSearch(String search, String productTitle, String productDescription){
+    public boolean checkSearch(String search, String productTitle, String productDescription) {
         return productTitle.toLowerCase().contains(search.toLowerCase()) || productDescription.toLowerCase().contains(search.toLowerCase());
     }
 
-    public void clickRegisterBtn(){
+    public void clickRegisterBtn() {
         this.registerBtn.click();
     }
 
-    public void clickLoginBtn(){
+    public void clickLoginBtn() {
         this.loginBtn.click();
     }
 
-    public void search(String searchInput){
+    public void search(String searchInput) {
         List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
         this.searchInput.sendKeys(searchInput);
         this.searchBtn.click();
 
 
-        this.wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.className("products"),productList.size()));
+        this.wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.className("products"), productList.size()));
     }
 
-    public void clickProduct(){
+    public void clickProduct() {
 
         List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
         productList.get(1).click();
 
     }
 
-    public String getId(){
+    public String getId() {
         List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
         return productList.get(1).getAttribute("id").split("#")[1];
     }
 
-    public String getCurrentUrl(){
+    public String getCurrentUrl() {
         return this.driver.getCurrentUrl();
     }
 
-    public void verifyRegisterRedirect(){
+    public void verifyRegisterRedirect() {
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/register"));
     }
 
-    public void verifyLoginRedirect(){
+    public void verifyLoginRedirect() {
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/login"));
     }
 
-    public void verifyCartRedirect(){
+    public void verifyCartRedirect() {
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/cart"));
     }
 
-    public void verifyProductRedirect(String id){
-        this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/product/"+id));
+    public void verifyProductRedirect(String id) {
+        this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/product/" + id));
     }
 
-    public void clickCartBtn(){
+    public void clickCartBtn() {
         this.cartBtn.click();
     }
 
-    public void clickNewProductButton(){
+    public void clickNewProductButton() {
         this.newProductBtn.click();
     }
 
-    public void verifyAdminRedirect(){
+    public void verifyAdminRedirect() {
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/admin-new-product"));
     }
 
-    public void waitForLoad(){
-        try{
+    public void waitForLoad() {
+        try {
             this.wait.until(ExpectedConditions.visibilityOf(anything));
-        }
-        catch (TimeoutException e){
+        } catch (TimeoutException e) {
             String error = "";
         }
     }
@@ -178,23 +183,60 @@ public class MainPOM {
         driver.findElement(By.tagName("html")).sendKeys(Keys.CONTROL, Keys.END);
     }
 
-    public Integer getProductsSize(){
+    public Integer getProductsSize() {
         List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
         return productList.size();
     }
 
-    public Boolean checkIncreasedProducts(Integer size){
-        this.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("product"),size));
+    public Boolean checkIncreasedProducts(Integer size) {
+        this.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("product"), size));
         List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
         return productList.size() > size;
     }
 
-    public Boolean checkOutOfStock(){
-        try{
+    public Boolean checkOutOfStock() {
+        try {
             this.wait.until(ExpectedConditions.visibilityOf(outOfStock));
             return true;
+        } catch (TimeoutException e) {
+            return false;
         }
-        catch (TimeoutException e){
+    }
+
+    public Boolean checkName() {
+        if (this.name.isDisplayed()) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
+    public void clickLogoutBtn() {
+        this.logoutBtn.click();
+    }
+
+    public Boolean checkCartAndLogoutBtn() {
+        if (this.cartBtn.isDisplayed() && this.logoutBtn.isDisplayed()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Boolean checkLoginAndRegisterBtn() {
+        if(this.loginBtn.isDisplayed() && this.registerBtn.isDisplayed()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean checkRegisterAndLoginBtn(){
+        if(this.registerBtn.isDisplayed() && this.loginBtn.isDisplayed()){
+            return true;
+        }else{
             return false;
         }
     }
