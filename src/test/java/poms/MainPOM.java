@@ -1,19 +1,20 @@
 package poms;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 
 public class MainPOM {
     WebDriver driver;
     WebDriverWait wait;
+    JavascriptExecutor js;
 
     @FindBy(id = "register-btn")
     WebElement registerBtn;
@@ -48,9 +49,18 @@ public class MainPOM {
     @FindBy(id = "new-product")
     WebElement newProductBtn;
 
+    @FindBy(className = "outOfStockMessage")
+    WebElement outOfStock;
+
+    @FindBy(id = "anything")
+    WebElement anything;
+
     public MainPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
+        this.js = (JavascriptExecutor) driver;
+
+
 
         PageFactory.initElements(this.driver, this);
     }
@@ -152,6 +162,41 @@ public class MainPOM {
 
     public void verifyAdminRedirect(){
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/admin-new-product"));
+    }
+
+    public void waitForLoad(){
+        try{
+            this.wait.until(ExpectedConditions.visibilityOf(anything));
+        }
+        catch (TimeoutException e){
+            String error = "";
+        }
+    }
+
+    public void scrollToBottom() {
+        this.theme.click();
+        driver.findElement(By.tagName("html")).sendKeys(Keys.CONTROL, Keys.END);
+    }
+
+    public Integer getProductsSize(){
+        List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
+        return productList.size();
+    }
+
+    public Boolean checkIncreasedProducts(Integer size){
+        this.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("product"),size));
+        List<WebElement> productList = this.productsContainer.findElements(By.className("product"));
+        return productList.size() > size;
+    }
+
+    public Boolean checkOutOfStock(){
+        try{
+            this.wait.until(ExpectedConditions.visibilityOf(outOfStock));
+            return true;
+        }
+        catch (TimeoutException e){
+            return false;
+        }
     }
 
 }
