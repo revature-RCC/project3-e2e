@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-        features = "features/checkout.feature",
+        features = "features",
 
         glue = "steps",
-        dryRun = true
+        dryRun = false
 )
 public class CucumberTestrunner {
 }
