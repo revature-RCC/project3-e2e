@@ -23,13 +23,13 @@ public class CartPOM {
     @FindBy(linkText = "\uD83D\uDDD1️")
     WebElement trashCanIcon;
 
-    @FindBy(className = "cartItems")
+    @FindBy(id = "cartItems")
     WebElement cartItems;
 
     @FindBy(className = "cartButton")
     WebElement checkoutBtn;
 
-    @FindBy(className = "foregroundElement")
+    @FindBy(id = "cartTotals")
     WebElement continueShoppingBtn;
 
     @FindBy(xpath = "/html/body/app-root/div/app-cart/div/div[2]/div[3]/p[2]")
@@ -71,6 +71,7 @@ public class CartPOM {
 
 
     public void deleteItem(){
+        this.wait.until(ExpectedConditions.visibilityOf(this.cartItems.findElement(By.tagName("a"))));
         List<WebElement> trashCans =  this.cartItems.findElements(By.tagName("a"));
         trashCans.get(0).click();
         this.wait.until(ExpectedConditions.invisibilityOf(trashCans.get(0)));
@@ -91,7 +92,7 @@ public class CartPOM {
     }
 
     public void clickContinueShopping(){
-        this.continueShoppingBtn.click();
+        this.continueShoppingBtn.findElement(By.className("foregroundElement")).click();
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/"));
     }
 
