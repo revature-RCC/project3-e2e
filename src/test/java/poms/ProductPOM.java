@@ -26,6 +26,9 @@ public class ProductPOM {
     @FindBy(xpath = "/html/body/app-root/div/app-product-page/div/div[2]/p[3]")
     WebElement maxStock;
 
+    @FindBy(id = "ContShopBtn")
+    WebElement continueShoppingBtn;
+
     public ProductPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
@@ -86,5 +89,14 @@ public class ProductPOM {
     /*public String getCurrentInput(){
         return  this.quantitySelect.getAttribute("ng-reflect-model");
     }*/
+
+    public void clickContinueShoppingBtn(){
+        this.wait.until(ExpectedConditions.visibilityOf(continueShoppingBtn));
+        this.continueShoppingBtn.click();
+    }
+
+    public void waitForSuccessfulRedirect(){
+        this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/"));
+    }
 
 }
