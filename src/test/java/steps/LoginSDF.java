@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Assertions.*;
 import poms.LoginPOM;
 
 public class LoginSDF {
@@ -47,5 +48,17 @@ public class LoginSDF {
     public void a_user_is_redirected_to_the_register_page() {
         this.loginPOM.waitForSuccessfulRedirect();
         Assertions.assertEquals("http://localhost:4200/register", this.loginPOM.getCurrentUrl());
+    }
+
+    @When("a user enters admin credentials")
+    public void a_user_enters_admin_credentials() {
+        this.loginPOM.enterUsername("admin");
+        this.loginPOM.enterPassword("pass1234");
+        this.loginPOM.submitLogin();
+    }
+    @Then("the add new product button is visible")
+    public void the_add_new_product_button_is_visible() {
+        this.loginPOM.waitForSuccessfulLogin();
+        Assertions.assertTrue(this.loginPOM.waitForBtn());
     }
 }

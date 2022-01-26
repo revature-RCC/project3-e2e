@@ -97,4 +97,14 @@ public class MainSDF {
         this.mainPOM.waitForSales();
         Assertions.assertTrue(this.mainPOM.checkSales());
     }
+
+    @When("An admin clicks on the add new product button")
+    public void an_admin_clicks_on_the_add_new_product_button() {
+        this.mainPOM.clickNewProductButton();
+    }
+    @Then("The admin is redirected to the add new product page")
+    public void the_admin_is_redirected_to_the_add_new_product_page() {
+        this.mainPOM.verifyAdminRedirect();
+        Assertions.assertEquals("http://localhost:4200/admin-new-product", this.mainPOM.getCurrentUrl());
+    }
 }

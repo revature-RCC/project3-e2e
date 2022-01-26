@@ -45,6 +45,9 @@ public class MainPOM {
     @FindBy(className = "saleRibbon")
     List<WebElement> saleRibbon;
 
+    @FindBy(id = "new-product")
+    WebElement newProductBtn;
+
     public MainPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
@@ -143,5 +146,12 @@ public class MainPOM {
         this.cartBtn.click();
     }
 
+    public void clickNewProductButton(){
+        this.newProductBtn.click();
+    }
+
+    public void verifyAdminRedirect(){
+        this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/admin-new-product"));
+    }
 
 }

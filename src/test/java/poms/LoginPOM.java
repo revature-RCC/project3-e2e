@@ -1,5 +1,6 @@
 package poms;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,9 @@ public class LoginPOM {
 
     @FindBy(id = "errorMessage")
     WebElement errMessage;
+
+    @FindBy(id = "new-product")
+    WebElement newProductBtn;
 
     public LoginPOM(WebDriver driver) {
         this.driver = driver;
@@ -67,5 +71,14 @@ public class LoginPOM {
 
     public void clickRegisterBtn() {
         this.registerBtn.click();
+    }
+
+    public Boolean waitForBtn(){
+        try {
+            this.wait.until(ExpectedConditions.visibilityOf(newProductBtn));
+            return true;
+        } catch (TimeoutException e){
+            return false;
+        }
     }
 }
