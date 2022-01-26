@@ -30,7 +30,7 @@ public class CartSDF {
     @Then("the user can see that item was removed")
     public void the_user_can_see_that_item_was_removed() {
         Integer postSize = this.cartPOM.getCartSize();
-        Assertions.assertEquals(this.size, postSize);
+        Assertions.assertEquals(0, postSize);
     }
 
     @When("a user clicks on the continue shopping button")
@@ -48,7 +48,7 @@ public class CartSDF {
     }
     @Then("the user is redirected to the checkout page")
     public void the_user_is_redirected_to_the_checkout_page() {
-        Assertions.assertEquals("http://localhost:4200/cart", this.cartPOM.getCurrentUrl());
+        Assertions.assertEquals("http://localhost:4200/checkout", this.cartPOM.getCurrentUrl());
     }
 
     @When("a user increases the quantity of an item")

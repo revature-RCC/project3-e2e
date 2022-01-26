@@ -16,15 +16,27 @@ Feature: Cart Page
     Given a user is on the cart page
     When a user deletes an item from cart
     Then the user can see that item was removed
+
   Scenario: A user can click the checkout button to go to the checkout page
     Given a user is on the cart page
     When a user clicks on the checkout button
     Then the user is redirected to the checkout page
+    Given a user is on the cart page
+    When a user deletes an item from cart
+    Then the user can see that item was removed
+
   Scenario: A user can click on the continue shopping button to go back to main page
     Given a user is on the cart page
     When a user clicks on the continue shopping button
     Then the user is redirected to the main page
+    Given a user is on the cart page
+    When a user deletes an item from cart
+    Then the user can see that item was removed
+
   Scenario: A user can see the total change to the correct amount
     Given a user is on the cart page
     When a user increases the quantity of an item
     Then the user can see the respective quantity and price is the same as the total
+    Given a user is on the cart page
+    When a user deletes an item from cart
+    Then the user can see that item was removed
