@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 
 import poms.MainPOM;
 
+import java.awt.*;
+
 public class MainSDF {
 
     MainPOM mainPOM;
@@ -15,6 +17,8 @@ public class MainSDF {
     String id;
 
     String color;
+
+    Integer size;
 
     @Given("A user is on the main page")
     public void a_user_is_on_the_main_page() {
@@ -106,5 +110,21 @@ public class MainSDF {
     public void the_admin_is_redirected_to_the_add_new_product_page() {
         this.mainPOM.verifyAdminRedirect();
         Assertions.assertEquals("http://localhost:4200/admin-new-product", this.mainPOM.getCurrentUrl());
+    }
+
+    @When("A user scrolls to the bottom of the page")
+    public void a_user_scrolls_to_the_bottom_of_the_page(){
+        this.mainPOM.waitForLoad();
+        this.size = this.mainPOM.getProductsSize();
+        this.mainPOM.scrollToBottom();
+    }
+    @Then("More items will load onto the page")
+    public void more_items_will_load_onto_the_page() {
+        Assertions.assertTrue(this.mainPOM.checkIncreasedProducts(this.size));
+    }
+
+    @Then("The user can see items that are out of stock")
+    public void the_user_can_see_items_that_are_out_of_stock() {
+        Assertions.assertTrue(this.mainPOM.checkOutOfStock());
     }
 }

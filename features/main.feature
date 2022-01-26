@@ -44,3 +44,12 @@ Feature: Main Page
     Given A user is on the main page
     When An admin clicks on the add new product button
     Then The admin is redirected to the add new product page
+
+  Scenario: A user can scroll down to the bottom of the page and more products are loaded
+    Given A user is on the main page
+    When A user scrolls to the bottom of the page
+    Then More items will load onto the page
+
+  Scenario: A user can see certain items are out of stock
+    Given A user is on the main page
+    Then The user can see items that are out of stock

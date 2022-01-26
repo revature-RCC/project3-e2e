@@ -27,3 +27,7 @@ Feature: Product Page
     When a user clicks the go to cart button
     Then the user will be redirected to the cart page
 
+  Scenario: A registered user clicks on continue shopping button
+    When a user clicks the continue shopping button
+    Then the user will be redirected to the main page
+

@@ -84,5 +84,15 @@ public class ProductSDF {
         Assertions.assertEquals("1", this.productPOM.getQuantity());
     }
 
+    @When("a user clicks the continue shopping button")
+    public void a_user_clicks_the_continue_shopping_button() {
+        this.productPOM.clickContinueShoppingBtn();
+    }
+    @Then("the user will be redirected to the main page")
+    public void the_user_will_be_redirected_to_the_main_page() {
+        this.productPOM.waitForSuccessfulRedirect();
+        Assertions.assertEquals("http://localhost:4200/", this.productPOM.getCurrentUrl());
+    }
+
 
 }
