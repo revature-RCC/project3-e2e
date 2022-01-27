@@ -29,6 +29,9 @@ public class ProductPOM {
     @FindBy(id = "ContShopBtn")
     WebElement continueShoppingBtn;
 
+    @FindBy(linkText = "Revature Courseware Cornucopia")
+    WebElement titleLink;
+
     public ProductPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
@@ -98,5 +101,9 @@ public class ProductPOM {
     public void waitForSuccessfulRedirect(){
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/"));
     }
+
+    public void clickTitleLink(){this.titleLink.click();}
+
+    public void verifyMainRedirect(){this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/"));}
 
 }

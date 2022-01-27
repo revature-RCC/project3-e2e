@@ -127,4 +127,40 @@ public class MainSDF {
     public void the_user_can_see_items_that_are_out_of_stock() {
         Assertions.assertTrue(this.mainPOM.checkOutOfStock());
     }
+
+    @Then("The user name will be displayed in the header")
+    public void the_user_name_will_be_displayed_in_the_header(){
+        Assertions.assertTrue(this.mainPOM.checkName());
+    }
+
+    @When("A user clicks on the logout button")
+    public void a_user_clicks_on_the_logout_button() {
+        this.mainPOM.clickLogoutBtn();
+    }
+
+    @Then("A user sees the cart and logout buttons")
+    public void the_user_will_see_cart_and_logout_buttons(){
+        Assertions.assertTrue(this.mainPOM.checkCartAndLogoutBtn());
+    }
+
+   /* @Then("The user will not see the login and register buttons")
+    public void the_user_will_not_see_the_login_and_register_buttons(){
+        Assertions.assertFalse(this.mainPOM.checkLoginAndRegisterBtn());
+    }*/
+
+    @Given("A user is not logged in")
+    public void a_user_is_not_logged_in() {
+        Assertions.assertFalse(this.mainPOM.checkName());
+    }
+
+    @Then("A user sees the register and login buttons")
+    public void a_user_sees_the_register_and_login_buttons(){
+        Assertions.assertTrue(this.mainPOM.checkRegisterAndLoginBtn());
+    }
+
+    /*@Then("The user will not see the cart and logout buttons")
+    public void the_user_will_not_see_the_cart_and_logout_buttons(){
+        Assertions.assertFalse(this.mainPOM.checkCartAndLogoutBtn());
+    }*/
+
 }

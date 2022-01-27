@@ -53,3 +53,26 @@ Feature: Main Page
   Scenario: A user can see certain items are out of stock
     Given A user is on the main page
     Then The user can see items that are out of stock
+
+  Scenario: A user's name will be displayed on the main page
+    Given A user is on the main page
+    When The user name will be displayed in the header
+
+  Scenario: A user can logout
+    Given a user is on the login page
+    When a user inputs valid credentials
+    Then a user is redirected to the inventory page
+    Given A user is on the main page
+    When A user clicks on the logout button
+    Then The user will be redirected to login page
+  Scenario: A user will see cart and logout buttons
+    Given a user is on the login page
+    When a user inputs valid credentials
+    Then a user is redirected to the inventory page
+    Given A user is on the main page
+    Then A user sees the cart and logout buttons
+
+  Scenario: A user will see register and login buttons
+    Given A user is on the main page
+    Then A user sees the register and login buttons
+

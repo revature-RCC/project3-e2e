@@ -94,5 +94,16 @@ public class ProductSDF {
         Assertions.assertEquals("http://localhost:4200/", this.productPOM.getCurrentUrl());
     }
 
+    @When("The user clicks on the Revature Courseware Cornucopia title")
+    public void the_user_clicks_on_the_revature_courseware_cornucopia_title(){
+        this.productPOM.clickTitleLink();
+    }
+
+    @Then("The user is redirected to the main page")
+    public void the_user_is_redirected_to_the_main_page(){
+        this.productPOM.verifyMainRedirect();
+        Assertions.assertEquals("http://localhost:4200/", this.productPOM.getCurrentUrl());
+    }
+
 
 }
