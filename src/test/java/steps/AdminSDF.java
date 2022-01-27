@@ -5,10 +5,15 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import poms.AdminPOM;
+import poms.MainPOM;
+import poms.ProductPOM;
 
 public class AdminSDF {
 
     AdminPOM adminPOM;
+
+    String id;
+
 
     @Given("An Admin is on the add product page")
     public void an_admin_is_on_the_add_product_page() {
@@ -17,6 +22,14 @@ public class AdminSDF {
         this.adminPOM = new AdminPOM(DriverSingleton.getInstance());
 
         Assertions.assertEquals("http://localhost:4200/admin-new-product", this.adminPOM.getCurrentUrl());
+    }
+
+    @Given("An admin is on the main page")
+    public void a_user_is_on_the_main_page() {
+        DriverSingleton.getInstance().get("http://localhost:4200/");
+
+        this.adminPOM = new AdminPOM(DriverSingleton.getInstance());
+        Assertions.assertEquals("http://localhost:4200/", this.adminPOM.getCurrentUrl());
     }
 
     @When("The Admin submits the form without adding a name")
@@ -64,4 +77,6 @@ public class AdminSDF {
         this.adminPOM.waitHere();
         Assertions.assertTrue(this.adminPOM.checkEmptyImage());
     }
+
+
 }

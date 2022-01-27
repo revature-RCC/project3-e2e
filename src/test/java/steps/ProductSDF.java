@@ -105,5 +105,14 @@ public class ProductSDF {
         Assertions.assertEquals("http://localhost:4200/", this.productPOM.getCurrentUrl());
     }
 
+    @When("The admin clicks edit product")
+    public void the_admin_clicks_edit_product() {
+        this.productPOM.clickEditBtn();
+    }
+
+    @Then("The admin is redirected to edit product page")
+    public void the_admin_is_redirected_to_edit_product_page() {
+        this.productPOM.verifyEditRedirect();
+    }
 
 }

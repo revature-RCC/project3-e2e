@@ -1,27 +1,18 @@
 package poms;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class AdminPOM {
 
     WebDriver driver;
     WebDriverWait wait;
-
-    public AdminPOM(WebDriver driver){
-        this.driver = driver;
-        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
-
-        PageFactory.initElements(this.driver, this);
-    }
 
     @FindBy(id = "productName")
     WebElement nameInput;
@@ -43,6 +34,19 @@ public class AdminPOM {
 
     @FindBy(tagName = "button")
     WebElement createProductBtn;
+
+    @FindBy(id = "products")
+    WebElement productsContainer;
+
+    @FindBy(id = "update-btn")
+    WebElement updateBtn;
+
+    public AdminPOM(WebDriver driver){
+        this.driver = driver;
+        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
+
+        PageFactory.initElements(this.driver, this);
+    }
 
     public void clickCreateProductBtn(){
         this.createProductBtn.click();
@@ -107,4 +111,13 @@ public class AdminPOM {
     public String getCurrentUrl(){
         return this.driver.getCurrentUrl();
     }
+
+
+    public void clickUpdateBtn(){
+        this.updateBtn.click();
+    }
+
+
+
+
 }
