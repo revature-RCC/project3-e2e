@@ -7,9 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
-public class AdminPOM {
+public class AddNewProductPOM {
 
     WebDriver driver;
     WebDriverWait wait;
@@ -35,18 +34,24 @@ public class AdminPOM {
     @FindBy(tagName = "button")
     WebElement createProductBtn;
 
+
+    @FindBy(className = "saleRibbon")
+    WebElement saleRibbon;
+
+
     @FindBy(id = "products")
     WebElement productsContainer;
 
     @FindBy(id = "update-btn")
     WebElement updateBtn;
 
-    public AdminPOM(WebDriver driver){
+    public AddNewProductPOM(WebDriver driver){
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
 
         PageFactory.initElements(this.driver, this);
     }
+
 
     public void clickCreateProductBtn(){
         this.createProductBtn.click();
@@ -113,11 +118,26 @@ public class AdminPOM {
     }
 
 
-    public void clickUpdateBtn(){
-        this.updateBtn.click();
+    public void waitForSuccessfulRedirect(){
+        this.wait.until(ExpectedConditions.urlContains("http://localhost:4200/product/"));
+    }
+
+    public boolean saleRibbonIsVisible(){
+        this.wait.until(ExpectedConditions.visibilityOf(saleRibbon));
+        return true;
     }
 
 
+    public void enterProductRealPrice(String productRegularPrice){
+        this.priceInput.sendKeys(productRegularPrice);
+    }
 
+    public void enterProductRealStock(String realStock){
+        this.stockInput.sendKeys(realStock);
+    }
+
+    public void enterProductRealSalesPrice(String productSalesPrice){
+        this.saleInput.sendKeys(productSalesPrice);
+    }
 
 }
