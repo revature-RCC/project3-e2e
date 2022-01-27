@@ -110,6 +110,7 @@ public class ProductPOM {
     public void verifyMainRedirect(){this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/"));}
 
     public void clickEditBtn(){
+        this.wait.until(ExpectedConditions.visibilityOf(editBtn));
         this.editBtn.click();
     }
 
