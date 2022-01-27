@@ -1,4 +1,4 @@
-Feature: Admin Page
+Feature: Add Product Page
   Background:
     Given a user is on the login page
     When a user enters admin credentials
