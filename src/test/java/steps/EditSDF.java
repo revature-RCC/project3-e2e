@@ -12,11 +12,11 @@ public class EditSDF {
 
     @Given("The admin is on the edit product page")
     public void the_admin_is_on_the_edit_product_page() {
-        DriverSingleton.getInstance().get("http://localhost:4200/admin-new-product");
+        DriverSingleton.getInstance().get("http://localhost:4200/admin/14");
 
         this.editPOM = new EditPOM(DriverSingleton.getInstance());
 
-        Assertions.assertEquals("http://localhost:4200/admin-new-product", this.editPOM.getCurrentUrl());
+        Assertions.assertEquals("http://localhost:4200/admin/14", this.editPOM.getCurrentUrl());
     }
 
     @When("The admin changes the name of the edit product")
