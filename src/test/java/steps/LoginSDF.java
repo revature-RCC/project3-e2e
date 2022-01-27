@@ -61,4 +61,30 @@ public class LoginSDF {
         this.loginPOM.waitForSuccessfulLogin();
         Assertions.assertTrue(this.loginPOM.waitForBtn());
     }
+
+    @When("User fills out incorrect username, but correct password and clicks login")
+    public void user_fills_out_incorrect_username_but_correct_password_and_clicks_login() {
+        this.loginPOM.enterUsername("wrongo");
+        this.loginPOM.enterPassword("password");
+        this.loginPOM.submitLogin();
+    }
+
+    @When("User fills out correct username, but incorrect password field and clicks the login button")
+    public void user_fills_out_correct_username_but_incorrect_password_field_and_clicks_the_login_button() {
+        this.loginPOM.enterUsername("selly");
+        this.loginPOM.enterPassword("wrongo");
+        this.loginPOM.submitLogin();
+    }
+
+    @When("User neglects to enter a username, but enters a password and clicks login")
+    public void user_neglects_to_enter_a_username_but_enters_a_password_and_clicks_login() {
+        this.loginPOM.enterPassword("password");
+        this.loginPOM.submitLogin();
+    }
+
+    @When("User enters a username, but neglects to enter a password and clicks login.")
+    public void user_enters_a_username_but_neglects_to_enter_a_password_and_clicks_login() {
+        this.loginPOM.enterUsername("selly");
+        this.loginPOM.submitLogin();
+    }
 }
