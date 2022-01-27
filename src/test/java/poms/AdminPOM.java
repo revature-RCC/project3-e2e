@@ -44,6 +44,10 @@ public class AdminPOM {
     @FindBy(tagName = "button")
     WebElement createProductBtn;
 
+    @FindBy(className = "saleRibbon")
+    WebElement saleRibbon;
+
+
     public void clickCreateProductBtn(){
         this.createProductBtn.click();
     }
@@ -106,5 +110,27 @@ public class AdminPOM {
 
     public String getCurrentUrl(){
         return this.driver.getCurrentUrl();
+    }
+
+    public void waitForSuccessfulRedirect(){
+        this.wait.until(ExpectedConditions.urlContains("http://localhost:4200/product/"));
+    }
+
+    public boolean saleRibbonIsVisible(){
+        this.wait.until(ExpectedConditions.visibilityOf(saleRibbon));
+        return true;
+    }
+
+
+    public void enterProductRealPrice(String productRegularPrice){
+        this.priceInput.sendKeys(productRegularPrice);
+    }
+
+    public void enterProductRealStock(String realStock){
+        this.stockInput.sendKeys(realStock);
+    }
+
+    public void enterProductRealSalesPrice(String productSalesPrice){
+        this.saleInput.sendKeys(productSalesPrice);
     }
 }
