@@ -1,9 +1,6 @@
 package poms;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,17 +8,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AdminPOM {
+public class AddNewProductPOM {
 
     WebDriver driver;
     WebDriverWait wait;
-
-    public AdminPOM(WebDriver driver){
-        this.driver = driver;
-        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
-
-        PageFactory.initElements(this.driver, this);
-    }
 
     @FindBy(id = "productName")
     WebElement nameInput;
@@ -44,8 +34,23 @@ public class AdminPOM {
     @FindBy(tagName = "button")
     WebElement createProductBtn;
 
+
     @FindBy(className = "saleRibbon")
     WebElement saleRibbon;
+
+
+    @FindBy(id = "products")
+    WebElement productsContainer;
+
+    @FindBy(id = "update-btn")
+    WebElement updateBtn;
+
+    public AddNewProductPOM(WebDriver driver){
+        this.driver = driver;
+        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
+
+        PageFactory.initElements(this.driver, this);
+    }
 
 
     public void clickCreateProductBtn(){
@@ -112,6 +117,7 @@ public class AdminPOM {
         return this.driver.getCurrentUrl();
     }
 
+
     public void waitForSuccessfulRedirect(){
         this.wait.until(ExpectedConditions.urlContains("http://localhost:4200/product/"));
     }
@@ -133,4 +139,5 @@ public class AdminPOM {
     public void enterProductRealSalesPrice(String productSalesPrice){
         this.saleInput.sendKeys(productSalesPrice);
     }
+
 }
