@@ -225,14 +225,6 @@ public class MainPOM {
         }
     }
 
-    public Boolean checkLoginAndRegisterBtn() {
-        if(this.loginBtn.isDisplayed() && this.registerBtn.isDisplayed()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
     public Boolean checkRegisterAndLoginBtn(){
         if(this.registerBtn.isDisplayed() && this.loginBtn.isDisplayed()){
             return true;

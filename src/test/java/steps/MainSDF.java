@@ -16,8 +16,6 @@ public class MainSDF {
 
     String id;
 
-    String color;
-
     Integer size;
 
     @Given("A user is on the main page")
@@ -88,12 +86,11 @@ public class MainSDF {
 
     @When("The user clicks on the dark mode button")
     public void the_user_clicks_on_the_dark_mode_button() {
-        color = this.mainPOM.checkThemeColor();
         this.mainPOM.clickDarkModeBtn();
     }
     @Then("Then the color scheme will change")
     public void then_the_color_scheme_will_change() {
-        Assertions.assertNotEquals(color, this.mainPOM.checkThemeColor());
+        Assertions.assertNotEquals("white", this.mainPOM.checkThemeColor());
     }
 
     @Then("The user can see sale tags and sale prices")
