@@ -48,6 +48,26 @@ public class AdminPOM {
         this.createProductBtn.click();
     }
 
+    public void enterProductName(String productName){
+        this.nameInput.sendKeys(productName);
+    }
+
+    public void enterProductDescription(String productDescription){
+        this.descInput.sendKeys(productDescription);
+    }
+
+    public void enterProductRegularPrice(Double productRegularPrice){
+        this.priceInput.sendKeys("Pictures of Uranus");
+    }
+
+    public void enterProductSalesPrice(Double productSalesPrice){
+        this.saleInput.sendKeys("Pictures of Uranus");
+    }
+
+    public void enterProductStock(Integer productStock){
+        this.stockInput.sendKeys("Pictures of Uranus");
+    }
+
     public Boolean checkEmptyName(){
         return this.nameInput.getText().isEmpty();
     }

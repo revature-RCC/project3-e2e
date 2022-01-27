@@ -22,7 +22,8 @@ Feature: Admin Page
     When The Admin submits the form without adding a regular price
     Then The form produces an error message on the price field
 
-  Scenario: An Admin tries to make a new product without adding a stock price
+  Scenario: An Admin tries to make a new product without adding an image
     Given An Admin is on the add product page
-    When The Admin submits the form without adding a stock price
-    Then The form produces an error message on the stock price field
+    When The Admin submits the form without adding image
+    Then The form produces an stays the same and has place holder image
+

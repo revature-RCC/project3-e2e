@@ -20,11 +20,8 @@ public class SDFHooks {
         registerPOM.enterPassword("password");
 
         registerPOM.clickBtn();
-//        registerPOM.waitForSuccessfulRedirect();
-//        DriverSingleton.quitInstance();
 
         if(registerPOM.getErrorMessage()){
-            System.out.println(registerPOM.getErrorMessage());
             DriverSingleton.quitInstance();
         } else {
             registerPOM.waitForSuccessfulRedirect();
