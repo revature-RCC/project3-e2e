@@ -179,7 +179,7 @@ public class MainPOM {
     }
 
     public void scrollToBottom() {
-        this.theme.click();
+        this.searchBtn.click();
         driver.findElement(By.tagName("html")).sendKeys(Keys.CONTROL, Keys.END);
     }
 
