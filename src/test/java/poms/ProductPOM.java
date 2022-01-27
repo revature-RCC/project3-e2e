@@ -1,5 +1,6 @@
 package poms;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ProductPOM {
     WebDriver driver;
@@ -35,11 +37,19 @@ public class ProductPOM {
     @FindBy(id = "edit-btn")
     WebElement editBtn;
 
+    @FindBy(id = "cart-btn")
+    WebElement cartHeaderBtn;
+
     public ProductPOM(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
 
         PageFactory.initElements(this.driver, this);
+    }
+
+    public String getCartAmount(){
+        List<WebElement> pTags = this.cartHeaderBtn.findElements(By.tagName("p"));
+        return pTags.get(1).getText();
     }
 
     public String getQuantity(){

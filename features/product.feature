@@ -23,7 +23,7 @@ Feature: Product Page
 
   Scenario: A registered user clicks on the add to cart button
     When a user clicks on the add to cart button
-    Then the user will be notified with a message
+    Then the user will be notified with a message and the cart quantity will increase
     When a user clicks the go to cart button
     Then the user will be redirected to the cart page
 
