@@ -27,6 +27,9 @@ Feature: Product Page
     When a user clicks the go to cart button
     Then the user will be redirected to the cart page
 
+    Scenario: A user already has the product in their cart and the go to cart button is shown instead of the add to cart button and quantity selector
+      Then The user will see the go to cart button
+
   Scenario: A registered user clicks on continue shopping button
     When a user clicks the continue shopping button
     Then the user will be redirected to the main page

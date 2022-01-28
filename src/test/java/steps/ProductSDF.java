@@ -59,6 +59,11 @@ public class ProductSDF {
         Assertions.assertEquals("http://localhost:4200/cart", this.productPOM.getCurrentUrl());
     }
 
+    @Then("The user will see the go to cart button")
+    public void the_user_will_see_the_go_to_cart_button() {
+        Assertions.assertEquals("Go to Cart", this.productPOM.getBtnText());
+    }
+
     @When("a user inputs a number above the stock of the product")
     public void a_user_inputs_a_number_above_the_stock_of_the_product() {
        productPOM.inputQuantity("1000000000");

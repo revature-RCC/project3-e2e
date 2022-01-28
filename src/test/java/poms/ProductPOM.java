@@ -52,6 +52,10 @@ public class ProductPOM {
         return pTags.get(1).getText();
     }
 
+    public String getBtnText(){
+        return this.addToCartBtn.getText();
+    }
+
     public String getQuantity(){
         return this.quantitySelect.getAttribute("ng-reflect-model");
     }
