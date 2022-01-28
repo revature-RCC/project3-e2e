@@ -40,3 +40,19 @@ Feature: Cart Page
     Given a user is on the cart page
     When a user deletes an item from cart
     Then the user can see that item was removed
+
+  Scenario: A user cannot enter a quantity below 1 on the cart item
+    Given a user is on the cart page
+    When a user decreases the quantity of an item lower than one
+    Then the user can see the quantity of an item stays at one
+    Given a user is on the cart page
+    When a user deletes an item from cart
+    Then the user can see that item was removed
+
+  Scenario: A user cannot enter a non-number character in the quantity select for a cart item
+    Given a user is on the cart page
+    When a user inputs a non-number character in the quantity select
+    Then the user can see the quantity of an item stays at one
+    Given a user is on the cart page
+    When a user deletes an item from cart
+    Then the user can see that item was removed

@@ -60,4 +60,24 @@ public class CartSDF {
 
         Assertions.assertTrue(this.cartPOM.checkTotal());
     }
+
+
+    @When("a user decreases the quantity of an item lower than one")
+    public void a_user_decreases_the_quantity_of_an_item_lower_than() {
+        this.cartPOM.decQuantity();
+    }
+
+    @When("a user inputs a non-number character in the quantity select")
+    public void a_user_inputs_a_non_number_character_in_the_quantity_select() {
+        this.cartPOM.insertLetterQuantity();
+    }
+
+    @Then("the user can see the quantity of an item stays at one")
+    public void the_user_can_see_the_quantity_of_an_item_stays_at() {
+        Assertions.assertEquals("1",this.cartPOM.getQuantity());
+
+    }
+
+
+
 }
