@@ -29,10 +29,10 @@ public class RegisterPOM {
     @FindBy(id = "email")
     WebElement emailInput;
 
-    @FindBy(id = "register-btn")
+    @FindBy(id = "register-form-btn")
     WebElement registerBtn;
 
-    @FindBy(id = "login-btn")
+    @FindBy(id = "login-form-btn")
     WebElement loginBtn;
 
     @FindBy(className = "errorMessage")
