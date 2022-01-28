@@ -65,6 +65,7 @@ Feature: Main Page
     Given A user is on the main page
     When A user clicks on the logout button
     Then The user will be redirected to login page
+
   Scenario: A user will see cart and logout buttons
     Given a user is on the login page
     When a user inputs valid credentials
