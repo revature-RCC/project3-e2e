@@ -20,10 +20,10 @@ public class LoginPOM {
     @FindBy(id = "password")
     WebElement passwordInput;
 
-    @FindBy(id = "login-btn")
+    @FindBy(id = "login-form-btn")
     WebElement loginBtn;
 
-    @FindBy(linkText = "Register")
+    @FindBy(id = "register-form-btn")
     WebElement registerBtn;
 
     @FindBy(id = "errorMessage")

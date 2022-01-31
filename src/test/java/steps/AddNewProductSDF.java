@@ -131,4 +131,16 @@ public class AddNewProductSDF {
         this.addNewProductPOM.clickCreateProductBtn();
     }
 
+    @When("User fills out the name, description, price, sales price \\(higher then price), negative stock, and presses submit")
+    public void user_fills_out_the_name_description_price_sales_price_higher_then_price_negative_stock_and_presses_submit() {
+        this.addNewProductPOM.enterProductName("Selenium Testing Basics 2.0");
+        this.addNewProductPOM.enterProductDescription("This product was made as a second test from selenium");
+        this.addNewProductPOM.enterProductRealPrice("10");
+        this.addNewProductPOM.enterProductRealSalesPrice("50");
+        this.addNewProductPOM.enterProductRealStock("-50");
+        this.addNewProductPOM.clickCreateProductBtn();
+    }
+
+
+
 }

@@ -2,7 +2,6 @@ package steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.BeforeAll;
-import org.openqa.selenium.UnhandledAlertException;
 import poms.RegisterPOM;
 
 public class SDFHooks {

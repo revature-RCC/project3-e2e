@@ -96,6 +96,14 @@ public class CartPOM {
         this.wait.until(ExpectedConditions.urlToBe("http://localhost:4200/"));
     }
 
+    public void decQuantity(){
+        this.quantityInput.sendKeys(Keys.ARROW_DOWN);
+    }
+
+    public void insertLetterQuantity(){
+        this.quantityInput.sendKeys("a");
+    }
+
 
 
 

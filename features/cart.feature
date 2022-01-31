@@ -12,15 +12,16 @@ Feature: Cart Page
     When a user clicks the go to cart button
     Then the user will be redirected to the cart page
 
-  Scenario: A user can remove an item from their cart
-    Given a user is on the cart page
-    When a user deletes an item from cart
-    Then the user can see that item was removed
 
   Scenario: A user can click the checkout button to go to the checkout page
     Given a user is on the cart page
     When a user clicks on the checkout button
     Then the user is redirected to the checkout page
+    Given a user is on the cart page
+    When a user deletes an item from cart
+    Then the user can see that item was removed
+
+  Scenario: A user can remove an item from their cart
     Given a user is on the cart page
     When a user deletes an item from cart
     Then the user can see that item was removed
@@ -37,6 +38,22 @@ Feature: Cart Page
     Given a user is on the cart page
     When a user increases the quantity of an item
     Then the user can see the respective quantity and price is the same as the total
+    Given a user is on the cart page
+    When a user deletes an item from cart
+    Then the user can see that item was removed
+
+  Scenario: A user cannot enter a quantity below 1 on the cart item
+    Given a user is on the cart page
+    When a user decreases the quantity of an item lower than one
+    Then the user can see the quantity of an item stays at one
+    Given a user is on the cart page
+    When a user deletes an item from cart
+    Then the user can see that item was removed
+
+  Scenario: A user cannot enter a non-number character in the quantity select for a cart item
+    Given a user is on the cart page
+    When a user inputs a non-number character in the quantity select
+    Then the user can see the quantity of an item stays at one
     Given a user is on the cart page
     When a user deletes an item from cart
     Then the user can see that item was removed

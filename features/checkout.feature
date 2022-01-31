@@ -15,25 +15,21 @@ Feature: Checkout Page
     When a user clicks on the checkout button
     Then the user is redirected to the checkout page
 
-    Scenario: A user clicks on the use billing address as shipping address button
-      Given a user is on the checkout page
-      When a user clicks on the use billing address as shipping address button
-      Then the billing address inputs are hidden
-      When a user clicks the confirm button
-      Then They are redirected to the receipt page
+  Scenario: A user clicks on the use billing address as shipping address button
+    Given a user is on the checkout page
+    When a user clicks on the use billing address as shipping address button
+    Then the billing address inputs are hidden
+    When a user clicks the confirm button
+    Then They are redirected to the receipt page
 
+  Scenario: The total above checkout is correct
+    Given a user is on the checkout page
+    When a user looks at their total
+    Then The total is correct
+    When a user clicks the confirm button
+    Then They are redirected to the receipt page
 
-     Scenario: The total above checkout is correct
-       Given a user is on the checkout page
-       When a user looks at their total
-       Then The total is correct
-       When a user clicks the confirm button
-       Then They are redirected to the receipt page
-
-
-
-
-    Scenario: A user clicks the confirm order button
-      Given a user is on the checkout page
-      When a user clicks the confirm button
-      Then They are redirected to the receipt page
+  Scenario: A user clicks the confirm order button
+    Given a user is on the checkout page
+    When a user clicks the confirm button
+    Then They are redirected to the receipt page

@@ -44,8 +44,8 @@ public class ProductSDF {
 
     @Then("the user will be notified with a message and the cart quantity will increase")
     public void the_user_will_be_notified_with_a_message_and_the_cart_quantity_will_increase() {
-        Assertions.assertEquals("1", this.productPOM.getCartAmount());
         Assertions.assertEquals("Added to Cart",this.productPOM.getMessage());
+        Assertions.assertEquals("1", this.productPOM.getCartAmount());
     }
 
     @When("a user clicks the go to cart button")
@@ -59,9 +59,14 @@ public class ProductSDF {
         Assertions.assertEquals("http://localhost:4200/cart", this.productPOM.getCurrentUrl());
     }
 
+    @Then("The user will see the go to cart button")
+    public void the_user_will_see_the_go_to_cart_button() {
+        Assertions.assertEquals("Go to Cart", this.productPOM.getBtnText());
+    }
+
     @When("a user inputs a number above the stock of the product")
     public void a_user_inputs_a_number_above_the_stock_of_the_product() {
-       productPOM.inputQuantity("1000000000");
+       productPOM.inputQuantity("100000");
     }
     @Then("the number in the input equals max stock")
     public void the_number_in_the_input_equals_max_stock() {
