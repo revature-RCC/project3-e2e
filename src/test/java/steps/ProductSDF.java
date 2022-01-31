@@ -44,8 +44,8 @@ public class ProductSDF {
 
     @Then("the user will be notified with a message and the cart quantity will increase")
     public void the_user_will_be_notified_with_a_message_and_the_cart_quantity_will_increase() {
-        Assertions.assertEquals("1", this.productPOM.getCartAmount());
         Assertions.assertEquals("Added to Cart",this.productPOM.getMessage());
+        Assertions.assertEquals("1", this.productPOM.getCartAmount());
     }
 
     @When("a user clicks the go to cart button")
