@@ -61,4 +61,11 @@ Feature: Add Product Page
     When User fills out the name, description, price, sales price (higher then price), stock, and presses submit
     Then User is prompted with an error message
 
+  Scenario: User fails to input correct sales price when creating a new product
+    When An admin clicks on the add new product button
+    Then The admin is redirected to the add new product page
+    Given An Admin is on the add product page
+    When User fills out the name, description, price, sales price (higher then price), negative stock, and presses submit
+    Then User is prompted with an error message
+
 
