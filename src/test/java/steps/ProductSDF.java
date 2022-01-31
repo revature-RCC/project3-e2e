@@ -66,7 +66,7 @@ public class ProductSDF {
 
     @When("a user inputs a number above the stock of the product")
     public void a_user_inputs_a_number_above_the_stock_of_the_product() {
-       productPOM.inputQuantity("100000");
+       productPOM.inputQuantity("10000000");
     }
     @Then("the number in the input equals max stock")
     public void the_number_in_the_input_equals_max_stock() {
