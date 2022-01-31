@@ -46,4 +46,13 @@ public class CheckoutSDF {
         this.checkoutPOM.waitForSuccessfulRedirct();
         Assertions.assertTrue(this.checkoutPOM.getCurrentUrl().contains("http://localhost:4200/receipt/"));
     }
+
+    @When("a user clicks on the use billing address as shipping address button again")
+    public void a_user_clicks_on_the_use_billing_address_as_shipping_address_button_again() {
+        this.checkoutPOM.clickHideBtn();
+    }
+    @Then("the billing address inputs are shown")
+    public void the_billing_address_inputs_are_shown() {
+        Assertions.assertTrue(this.checkoutPOM.isBillingVisible());
+    }
 }

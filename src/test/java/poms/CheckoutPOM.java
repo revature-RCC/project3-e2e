@@ -16,8 +16,9 @@ public class CheckoutPOM {
     @FindBy(xpath = "/html/body/app-root/div/app-checkout/div[1]/div/div[5]/input")
     WebElement hideBtn;
 
-    @FindBy(xpath = "/html/body/app-root/div/app-checkout/div[2]/div/div")
+    @FindBy(xpath = "/html/body/app-root/div/app-checkout/div[2]/div/div/div[1]/input")
     WebElement hiddenInput;
+
 
     @FindBy(className = "cartButton")
     WebElement confirmBtn;
@@ -82,6 +83,13 @@ public class CheckoutPOM {
 
     public void waitForSuccessfulRedirct(){
         this.wait.until(ExpectedConditions.urlContains("http://localhost:4200/receipt/"));
+    }
+
+    public boolean isBillingVisible(){
+        this.wait.until(ExpectedConditions.visibilityOf(hiddenInput));
+
+        return true;
+
     }
 
 }
