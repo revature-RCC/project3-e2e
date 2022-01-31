@@ -84,14 +84,14 @@ public class MainPOM {
     }
 
     public void clickDarkModeBtn() {
-        this.anchors.get(3).click();
+        this.anchors.get(4).click();
     }
 
-    public String checkThemeColor() {
-        if (this.theme.getAttribute("style").contains("black")) {
-            return "black";
+    public String checkTheme() {
+        if (this.theme.getAttribute("style").contains("3:white")) {
+            return "light";
         } else {
-            return "white";
+            return "dark";
         }
     }
 
