@@ -87,11 +87,11 @@ public class MainPOM {
         this.anchors.get(4).click();
     }
 
-    public String checkTheme() {
-        if (this.theme.getAttribute("style").contains("3:white")) {
-            return "light";
+    public String checkThemeColor() {
+        if (this.theme.getAttribute("style").contains("4:black")) {
+            return "white";
         } else {
-            return "dark";
+            return "black";
         }
     }
 

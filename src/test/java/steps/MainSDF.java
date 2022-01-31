@@ -90,7 +90,7 @@ public class MainSDF {
     }
     @Then("Then the color scheme will change")
     public void then_the_color_scheme_will_change() {
-        Assertions.assertNotEquals("light", this.mainPOM.checkTheme());
+        Assertions.assertNotEquals("light", this.mainPOM.checkThemeColor());
     }
 
     @Then("The user can see sale tags and sale prices")
