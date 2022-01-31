@@ -31,6 +31,11 @@ Feature: Main Page
     Given A user is on the main page
     Then The user can see items that are out of stock
 
+  Scenario: An Admin is logged in and can see the add new product button
+    Given a user is on the login page
+    When a user enters admin credentials
+    Then the add new product button is visible
+
 
 
 
