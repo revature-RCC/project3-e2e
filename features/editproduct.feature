@@ -56,3 +56,10 @@ Feature: Edit Product Page
     Given The admin is on the edit product page
     When The user tries to change the sale price higher than the original price
     Then The user will stay on the edit product page
+
+  Scenario: User fails to change stock when editing a product
+    When The admin clicks edit product
+    Then The admin is redirected to edit product page
+    Given The admin is on the edit product page
+    When The user tries to change the stock to an empty field
+    Then The user will stay on the edit product page

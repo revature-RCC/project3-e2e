@@ -1,5 +1,6 @@
 package poms;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,6 +63,11 @@ public class EditPOM {
 
     public void enterProductStock(String productStock){
         this.stockInput.sendKeys(productStock);
+    }
+
+    public void emptyProductStock(){
+        this.stockInput.sendKeys(Keys.CONTROL + "a");
+        this.stockInput.sendKeys(Keys.DELETE);
     }
 
     public void clickUpdateBtn(){

@@ -26,6 +26,13 @@ Feature: Add Product Page
     When The Admin submits the form without adding a regular price
     Then The form produces an error message on the price field
 
+  Scenario: An Admin tries to make a new product without adding a stock
+    When An admin clicks on the add new product button
+    Then The admin is redirected to the add new product page
+    Given An Admin is on the add product page
+    When The Admin submits the form without adding a stock
+    Then The form produces an error message on the stock field
+
   Scenario: An Admin tries to make a new product without adding an image
     When An admin clicks on the add new product button
     Then The admin is redirected to the add new product page

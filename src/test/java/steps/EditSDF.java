@@ -67,6 +67,11 @@ public class EditSDF {
         this.editPOM.clickUpdateBtn();
     }
 
+    @When("The user tries to change the stock to an empty field")
+    public void the_user_tries_to_change_the_stock_to_an_empty_field() {
+        this.editPOM.emptyProductStock();
+    }
+
     @Then("The admin is redirected to the product page")
     public void the_admin_is_redirected_to_the_product_page() {
         this.editPOM.verifyRedirect();
@@ -77,6 +82,8 @@ public class EditSDF {
     public void the_user_will_stay_on_the_edit_product_page() {
         Assertions.assertEquals("http://localhost:4200/admin/14", this.editPOM.getCurrentUrl());
     }
+
+
 
 
 

@@ -141,6 +141,24 @@ public class AddNewProductSDF {
         this.addNewProductPOM.clickCreateProductBtn();
     }
 
+    @When("The Admin submits the form without adding a stock")
+    public void the_admin_submits_the_form_without_adding_a_stock() {
+
+        this.addNewProductPOM.enterProductName("Selenium Testing Basics 2.0");
+        this.addNewProductPOM.enterProductDescription("This product was made as a second test from selenium");
+        this.addNewProductPOM.enterProductRealPrice("100");
+        this.addNewProductPOM.enterProductRealSalesPrice("50");
+        this.addNewProductPOM.clickCreateProductBtn();
+
+    }
+    @Then("The form produces an error message on the stock field")
+    public void the_form_produces_an_error_message_on_the_stock_field() {
+
+        this.addNewProductPOM.waitHere();
+        Assertions.assertTrue(this.addNewProductPOM.checkEmptyStock());
+
+    }
+
 
 
 }
